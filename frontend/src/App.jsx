@@ -6,16 +6,9 @@ function App() {
 
   const apiHit = async () => {
     try {
-      const Response = await fetch('https://ci-and-cd.onrender.com/greeting', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ name: 'John Doe' })
-      })
-      const result = await Response.json()
-      console.log('API Response:', result)
-      setData(result.message)
+      const Response = await fetch('https://ci-and-cd.onrender.com/test')
+      const result = await Response.text()
+      setData(result)
     } catch (error) {
       console.error('Error fetching data:', error)
     }
@@ -27,8 +20,10 @@ function App() {
 
   return (
     <>
-      <h1 style={{backgroundColor: 'pink'}}>Hello Bhai Kya haal hai</h1>
-      <p>{data ? JSON.stringify(data) : 'Loading...'}</p>
+      <h1 style={{ backgroundColor: 'pink' }}>
+        Hello Bhai Kya haal hai
+      </h1>
+      <p>{data ? data : 'Loading...'}</p>
     </>
   )
 }
